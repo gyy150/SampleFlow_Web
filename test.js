@@ -75,7 +75,22 @@ function processData(allText) {
         }
     }
     console.log(G.edges(true));
-    
+    var edges_to_remove = [];
+    var edge_to_remove = [];
+    G.edges().forEach(function (item, index) {
+        Start_Index = item[0];
+        End_Index = item[1];
+        var SampleCount = G.adj.get(Start_Index).get(End_Index).SampleCount;
+        
+        if(SampleCount < 20){
+            console.log('lol');
+            console.log(SampleCount);
+            edge_to_remove = [Start_Index,End_Index];
+            edges_to_remove.push(edge_to_remove);
+        }
+    });
+    console.log(edges_to_remove);
+    G.removeEdgesFrom(edges_to_remove)
     jsnx.draw(G, {
         element: '#demo-canvas',
         width : 800,
