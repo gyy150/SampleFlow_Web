@@ -98,7 +98,11 @@ function processData(allText) {
         withLabels: true,
         labels : 'name',
         weighted : true,
-        weights : 'SampleCount'
+        weights : 'SampleCount',
+        nodeAttr: { 
+            r:5
+        }
+        
     });
     
 }
